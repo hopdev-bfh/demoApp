@@ -1,9 +1,17 @@
+<div *ngIf="withPipe; else nopipe">
+  <p>A pipe is used to validate the input</p>
+</div>
+<ng-template #nopipe><p>No pipe used to validate the input</p></ng-template>
+
 <form>
   <mat-form-field appearance="legacy">
 
     <mat-label>
-      <div *ngIf="magicNumber; else hint">{{ magicNumber | magicpipe }}</div>
+      <div *ngIf="magicNumber && withPipe; else second">{{ magicNumber | magicpipe }}</div>
     </mat-label>
+    <ng-template #second>
+      <div *ngIf="magicNumber; else hint">{{ magicNumber }}</div>
+    </ng-template>
     <ng-template #hint>
       Write something in the input field to change this label
     </ng-template>
