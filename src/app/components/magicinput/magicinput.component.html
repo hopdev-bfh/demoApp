@@ -1,0 +1,14 @@
+<form>
+  <mat-form-field appearance="legacy">
+
+    <mat-label>
+      <div *ngIf="magicNumber; else hint">{{ magicNumber }}</div>
+    </mat-label>
+    <ng-template #hint>
+      Write something in the input field to change this label
+    </ng-template>
+
+    <input type="text" [(ngModel)]="magicNumber" matInput [ngModelOptions]="{standalone: true}" />
+
+  </mat-form-field>
+</form>
